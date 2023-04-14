@@ -180,6 +180,8 @@ button {
 	background-color: #fa9884;
 	grid-column: 2 / 3;
 	grid-row: 2 / 3;
+	padding-left: 300px;
+	padding-top: 15px;
 }
 
 .sidebar > div:nth-child(1) {
