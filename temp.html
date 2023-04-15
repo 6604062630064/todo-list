@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="./bundle.js" defer></script>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+			rel="stylesheet"
+		/>
+
+		<title>Todo List</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h1>Todo List</h1>
+			</div>
+			<div class="sidebar">
+				<div>
+					<button class="inbox">Inbox</button>
+					<button class="today">Today</button>
+					<button class="week">This week</button>
+				</div>
+				<div>
+					<h3>Projects</h3>
+					<button>+ Add a project</button>
+				</div>
+			</div>
+			<div class="main">
+				<h3>Test</h3>
+				<form class="hidden" action="">
+					<label for="title">Title</label>
+					<input type="text" id="title" name="title" required />
+					<label for="description">Description</label>
+					<input type="text" id="description" name="description" required />
+					<label for="date">Due Date</label>
+					<input type="date" id="date" name="date" required />
+					<label for="priority">Priority</label>
+					<select name="priority" id="priority">
+						<option value="">--Please choose an option--</option>
+						<option value="high">High</option>
+						<option value="medium">Medium</option>
+						<option value="low">Low</option>
+					</select>
+					<hr />
+					<button id="form-submit">Submit</button>
+				</form>
+				<div class="table"><button>+ Add a task</button></div>
+			</div>
+			<div class="footer">
+				<p>Copyright @ 2023 Kittipong</p>
+			</div>
+		</div>
+	</body>
+</html>

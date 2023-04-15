@@ -163,7 +163,7 @@ h1 {
 	gap: 15px;
 }
 
-button {
+.sidebar button {
 	text-align: left;
 	background-color: #ffe5ca;
 	border: none;
@@ -221,4 +221,42 @@ h3 {
 	zoom: 60%;
 	top: 7px;
 	margin-right: 15px;
+}
+
+.main button {
+	border: none;
+	background-color: #fa9884;
+	text-align: left;
+	font-size: 1.5rem;
+}
+
+.table {
+	margin-top: 15px;
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+}
+
+.main h3 {
+	font-size: 1.7rem;
+}
+
+form {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	align-content: center;
+	width: 900px;
+}
+
+form hr {
+	background-color: inherit;
+	visibility: hidden;
+	width: 100%;
+}
+
+.hidden {
+	display: none;
 }
