@@ -5,6 +5,10 @@ export default class Project {
 	}
 
 	addTodo(Todo) {
-		this.list.append(Todo);
+		this.list.push(Todo);
+	}
+
+	getAllTodos() {
+		return this.list;
 	}
 }

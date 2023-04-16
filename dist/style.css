@@ -177,6 +177,10 @@ h1 {
 }
 
 .main {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 20px;
 	background-color: #fa9884;
 	grid-column: 2 / 3;
 	grid-row: 2 / 3;
@@ -259,4 +263,9 @@ form hr {
 
 .hidden {
 	display: none;
+}
+
+.main div.task {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 }

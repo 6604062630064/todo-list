@@ -1,13 +1,62 @@
-import Project from "./project";
-import Todo from "./todo";
+const updateSidebar = (input) => {
+	const div = document.querySelector(".project-list");
+	const projectList = input.getAllProjects();
+	const projectNames = document.querySelectorAll(".project-name");
+	projectNames.forEach((e) => {
+		e.remove();
+	});
+	projectList.forEach((e) => {
+		const projectName = document.createElement("button");
+		projectName.classList.add("project-name");
+		projectName.textContent = e;
+		div.insertBefore(projectName, document.querySelector(".add-project"));
+	});
+};
 
-const display = () => {
+const updateTable = (reveivedProject) => {
+	const header = document.querySelector(".main h3");
+	header.textContent = reveivedProject.name;
+	const tasks = document.querySelectorAll(".task");
+	tasks.forEach((child) => {
+		child.remove();
+	});
+	reveivedProject.getAllTodos().forEach((e) => {
+		console.log(1);
+		const main = document.querySelector(".main");
+		const div = document.createElement("div");
+		div.classList.add("task");
+		const title = document.createElement("h4");
+		title.textContent = e.title;
+
+		const description = document.createElement("p");
+		description.textContent = e.description;
+
+		const dueDate = document.createElement("p");
+		dueDate.textContent = e.dueDate;
+
+		const priority = document.createElement("h4");
+		priority.textContent = e.priority;
+
+		div.append(title, description, dueDate, priority);
+
+		main.insertBefore(div, document.querySelector("form"));
+	});
+	const form = document.querySelector("form");
+
+	form.classList.add("hidden");
+
+	const addButton = document.querySelector(".table");
+	addButton.classList.remove("hidden");
+};
+
+const displayProject = (reveivedProject) => {
 	const main = document.querySelector(".main");
+	main.innerHTML = "";
 	const h3 = document.createElement("h3");
 
 	const table = document.createElement("div");
 	table.classList.add("table");
-	h3.textContent = "Test";
+	h3.textContent = reveivedProject.name;
 
 	const addTaskButton = document.createElement("button");
 	addTaskButton.textContent = "+ Add a task";
@@ -15,13 +64,14 @@ const display = () => {
 	addTaskButton.addEventListener("click", () => {
 		const getForm = document.querySelector("form");
 		getForm.classList.remove("hidden");
-		addTaskButton.classList.add("hidden");
+		table.classList.add("hidden");
 	});
 	main.appendChild(h3);
 
 	// Create a form
 	const form = document.createElement("form");
 	form.classList.add("hidden");
+
 	const titleLabel = document.createElement("label");
 	titleLabel.textContent = "Title";
 	titleLabel.setAttribute("for", "title");
@@ -47,8 +97,8 @@ const display = () => {
 
 	const dateInput = document.createElement("input");
 	dateInput.setAttribute("type", "date");
-	dateInput.setAttribute("id", "title");
-	dateInput.setAttribute("name", "title");
+	dateInput.setAttribute("id", "date");
+	dateInput.setAttribute("name", "date");
 	dateInput.required = true;
 
 	const selectLabel = document.createElement("label");
@@ -95,10 +145,9 @@ const display = () => {
 		button
 	);
 
-	table.appendChild(form);
+	main.appendChild(form);
 	table.appendChild(addTaskButton);
 
 	main.appendChild(table);
 };
-
-export default display;
+export { displayProject, updateTable, updateSidebar };

@@ -1,9 +1,17 @@
 export default class Storage {
 	constructor() {
-		this.list = [];
+		this.object = {};
 	}
 
 	addProject(Project) {
-		this.list.append(Todo);
+		this.object[Project.name] = Project;
+	}
+
+	getProjectByName(name) {
+		return this.object[name];
+	}
+
+	getAllProjects() {
+		return Object.keys(this.object);
 	}
 }
