@@ -27,6 +27,7 @@ const updateTable = (reveivedProject) => {
 		div.classList.add("task");
 		const title = document.createElement("h4");
 		title.textContent = e.title;
+		title.classList.add("title");
 
 		const description = document.createElement("p");
 		description.textContent = e.description;
@@ -37,7 +38,14 @@ const updateTable = (reveivedProject) => {
 		const priority = document.createElement("h4");
 		priority.textContent = e.priority;
 
-		div.append(title, description, dueDate, priority);
+		const edit = document.createElement("button");
+		edit.textContent = "edit";
+		edit.classList.add("edit");
+
+		const deleteButton = document.createElement("button");
+		deleteButton.textContent = "X";
+		deleteButton.classList.add("remove");
+		div.append(title, description, dueDate, priority, edit, deleteButton);
 
 		main.insertBefore(div, document.querySelector("form"));
 	});

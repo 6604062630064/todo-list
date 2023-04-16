@@ -11,12 +11,8 @@ test.addTodo(todo1);
 test.addTodo(todo2);
 storage.addProject(test);
 
-displayProject(test);
-updateTable(test);
-updateSidebar(storage);
-
-const form = document.querySelector("form");
 const addProjectButton = document.querySelector(".add-project");
+
 const addProjectEventListener = () => {
 	const projectButtons = document.querySelectorAll(".project-name");
 	projectButtons.forEach((child) => {
@@ -27,6 +23,28 @@ const addProjectEventListener = () => {
 		});
 	});
 };
+
+const addDeleteEventListenr = () => {
+	const deleteButtons = document.querySelectorAll(".remove");
+	deleteButtons.forEach((child) => {
+		child.addEventListener("click", (e) => {
+			e.preventDefault();
+			const name = e.target.parentNode.querySelector(".title").textContent;
+			const projectName = document.querySelector(".main h3").textContent;
+			console.log(name);
+			storage.getProjectByName(projectName).removeTodoByName(name);
+			updateTable(storage.getProjectByName(projectName));
+			addDeleteEventListenr();
+		});
+	});
+};
+
+displayProject(test);
+updateTable(test);
+updateSidebar(storage);
+addDeleteEventListenr();
+
+const form = document.querySelector("form");
 
 addProjectButton.addEventListener("click", (e) => {
 	e.preventDefault();
@@ -50,4 +68,5 @@ form.addEventListener("submit", (e) => {
 	console.log(storage.getProjectByName(header.textContent).list);
 	updateTable(storage.getProjectByName(header.textContent));
 	form.reset();
+	addDeleteEventListenr();
 });
