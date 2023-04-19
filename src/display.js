@@ -20,11 +20,12 @@ const updateTable = (reveivedProject) => {
 	tasks.forEach((child) => {
 		child.remove();
 	});
-	reveivedProject.getAllTodos().forEach((e) => {
+	reveivedProject.getAllTodos().forEach((e, i) => {
 		console.log(1);
 		const main = document.querySelector(".main");
 		const div = document.createElement("div");
 		div.classList.add("task");
+		div.id = i;
 		const title = document.createElement("h4");
 		title.textContent = e.title;
 		title.classList.add("title");
@@ -79,6 +80,7 @@ const displayProject = (reveivedProject) => {
 	// Create a form
 	const form = document.createElement("form");
 	form.classList.add("hidden");
+	form.classList.add("form-add");
 
 	const titleLabel = document.createElement("label");
 	titleLabel.textContent = "Title";
@@ -122,15 +124,15 @@ const displayProject = (reveivedProject) => {
 	deOption.value = "";
 
 	const highOption = document.createElement("option");
-	highOption.value = "high";
+	highOption.value = "High";
 	highOption.textContent = "High";
 
 	const mediumOption = document.createElement("option");
-	mediumOption.value = "medium";
+	mediumOption.value = "Medium";
 	mediumOption.textContent = "Medium";
 
 	const lowOption = document.createElement("option");
-	lowOption.value = "low";
+	lowOption.value = "Low";
 	lowOption.textContent = "Low";
 
 	const hr = document.createElement("hr");
